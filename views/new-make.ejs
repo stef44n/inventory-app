@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Add New Make</title>
+    </head>
+    <body>
+        <!-- Include the header for navigation -->
+        <%- include('partials/header') %>
+
+        <h1>Add New Make</h1>
+
+        <!-- Form for adding a new car make -->
+        <form action="/makes" method="POST">
+            <label for="make_name">Make Name:</label>
+            <input type="text" id="make_name" name="make_name" required />
+            <button type="submit">Add Make</button>
+        </form>
+
+        <!-- Link to go back to the list of car makes -->
+        <p><a href="/makes">Back to Makes</a></p>
+    </body>
+</html>

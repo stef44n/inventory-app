@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cars by Make</title>
+    </head>
+    <body>
+        <!-- Include the header for navigation -->
+        <%- include('partials/header') %>
+
+        <h1>Cars of Make: <%= make.make_name %></h1>
+
+        <ul>
+            <% cars.forEach(car => { %>
+            <li>
+                <a href="/cars/<%= car.car_id %>"
+                    ><%= make.make_name %>
+                    <strong><%= car.model_name %></strong> - <%= car.yr %>
+                    (License Plate: <%= car.license_plate %>) - <%=
+                    car.vehicle_type_name %> - <%= car.status %></a
+                >
+            </li>
+            <% }) %>
+        </ul>
+
+        <!-- Edit Make Button -->
+        <a href="/makes/<%= make.make_id %>/edit">
+            <button>Edit Make</button>
+        </a>
+
+        <!-- Delete Make Button -->
+        <form
+            action="/makes/<%= make.make_id %>?_method=DELETE"
+            method="POST"
+            style="display: inline"
+        >
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                required
+            />
+            <button
+                type="submit"
+                onclick="return confirm('Are you sure you want to delete this make and all associated models and cars?');"
+            >
+                Delete Make
+            </button>
+        </form>
+
+        <!-- Back to Makes -->
+        <p><a href="/makes">Back to Makes</a></p>
+    </body>
+</html>

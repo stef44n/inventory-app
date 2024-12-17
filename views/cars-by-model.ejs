@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cars by Model</title>
+    </head>
+    <body>
+        <!-- Include the header for navigation -->
+        <%- include('partials/header') %>
+
+        <h1>Cars of Model: <%= model.model_name %></h1>
+
+        <ul>
+            <% cars.forEach(car => { %>
+            <li>
+                <a href="/cars/<%= car.car_id %>"
+                    ><%= car.make_name %> <%= car.model_name %> - <%= car.yr %>
+                    (License Plate: <%= car.license_plate %>) - <%=
+                    car.vehicle_type_name %> -
+                    <strong><%= car.status %></strong></a
+                >
+            </li>
+            <% }) %>
+        </ul>
+
+        <!-- Edit Model Button -->
+        <a href="/models/<%= model.model_id %>/edit">
+            <button>Edit Model</button>
+        </a>
+
+        <!-- Delete Model Button -->
+        <form
+            action="/models/<%= model.model_id %>?_method=DELETE"
+            method="POST"
+            style="display: inline"
+        >
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                required
+            />
+            <button
+                type="submit"
+                onclick="return confirm('Are you sure you want to delete this model and all associated cars?');"
+            >
+                Delete Model
+            </button>
+        </form>
+
+        <!-- Back to Models -->
+        <p><a href="/models">Back to Models</a></p>
+    </body>
+</html>

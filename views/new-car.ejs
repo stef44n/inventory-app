@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Add New Car</title>
+    </head>
+    <body>
+        <!-- Include the header for navigation -->
+        <%- include('partials/header') %>
+
+        <h1>Add New Car</h1>
+
+        <!-- Form for adding a new car -->
+        <form action="/cars" method="POST">
+            <label for="model_id">Select Model:</label>
+            <select id="model_id" name="model_id" required>
+                <% models.forEach(model => { %>
+                <option value="<%= model.model_id %>">
+                    <%= model.model_name %>
+                </option>
+                <% }) %>
+            </select>
+
+            <label for="vehicle_type_id">Select Vehicle Type:</label>
+            <select id="vehicle_type_id" name="vehicle_type_id" required>
+                <% vehicleTypes.forEach(type => { %>
+                <option value="<%= type.vehicle_type_id %>">
+                    <%= type.vehicle_type_name %>
+                </option>
+                <% }) %>
+            </select>
+
+            <label for="yr">Manufacturing Year:</label>
+            <input
+                type="number"
+                id="yr"
+                name="yr"
+                min="1900"
+                max="<%= new Date().getFullYear() %>"
+                required
+            />
+
+            <label for="license_plate">License Plate:</label>
+            <input
+                type="text"
+                id="license_plate"
+                name="license_plate"
+                required
+            />
+
+            <label for="mileage">Mileage:</label>
+            <input type="number" id="mileage" name="mileage" min="0" />
+
+            <label for="status">Status:</label>
+            <select id="status" name="status" required>
+                <option value="Available">Available</option>
+                <option value="Rented">Rented</option>
+                <option value="Maintenance">Maintenance</option>
+            </select>
+
+            <button type="submit">Add Car</button>
+        </form>
+
+        <!-- Link to go back to the list of cars -->
+        <p><a href="/cars">Back to Cars</a></p>
+    </body>
+</html>

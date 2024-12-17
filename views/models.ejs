@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Car Models</title>
+    </head>
+    <body>
+        <!-- Include the header for navigation -->
+        <%- include('partials/header') %>
+
+        <h1>Car Models</h1>
+        <p>Select a car model to view the cars in that category.</p>
+
+        <ul>
+            <% models.forEach(model => { %>
+            <li>
+                <a href="/models/<%= model.model_id %>/cars">
+                    <%= model.make_name %> <%= model.model_name %>
+                </a>
+            </li>
+            <% }) %>
+        </ul>
+
+        <!-- Link to add a new car model -->
+        <a href="/models/new">
+            <button>Add New Model</button>
+        </a>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cars</title>
+    </head>
+    <body>
+        <!-- Include the header for navigation -->
+        <%- include('partials/header') %>
+
+        <h1>Cars</h1>
+        <p>Select a car to view its details.</p>
+
+        <ul>
+            <% cars.forEach(car => { %>
+            <li>
+                <a href="/cars/<%= car.car_id %>">
+                    <%= car.make_name %> <%= car.model_name %> - <%= car.yr %>
+                    (License Plate: <%= car.license_plate %>)
+                </a>
+            </li>
+            <% }) %>
+        </ul>
+
+        <!-- Link to add a new car -->
+        <a href="/cars/new">
+            <button>Add New Car</button>
+        </a>
+    </body>
+</html>

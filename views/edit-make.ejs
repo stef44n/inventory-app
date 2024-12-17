@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Edit Car Make</title>
+    </head>
+    <body>
+        <!-- Include the header for navigation -->
+        <%- include('partials/header') %>
+
+        <h1>Edit Car Make</h1>
+
+        <!-- Form to edit the car make -->
+        <form action="/makes/<%= make.make_id %>?_method=PUT" method="POST">
+            <label for="make_name">Make Name:</label>
+            <input
+                type="text"
+                id="make_name"
+                name="make_name"
+                value="<%= make.make_name %>"
+                required
+            />
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                required
+            />
+
+            <!-- Hidden input to use PUT method via method-override -->
+            <input type="hidden" name="_method" value="PUT" />
+
+            <button type="submit">Update Make</button>
+        </form>
+
+        <!-- Link to go back to the list of makes -->
+        <p><a href="/makes">Back to Makes</a></p>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vehicle Types</title>
+    </head>
+    <body>
+        <!-- Include the header for navigation -->
+        <%- include('partials/header') %>
+
+        <h1>Vehicle Types</h1>
+
+        <ul>
+            <% vehicleTypes.forEach(vehicleType => { %>
+            <li>
+                <a
+                    href="/vehicle-types/<%= vehicleType.vehicle_type_id %>/cars"
+                >
+                    <%= vehicleType.vehicle_type_name %>
+                </a>
+            </li>
+            <% }) %>
+        </ul>
+
+        <!-- Link to add a new vehicle type -->
+        <a href="/vehicle-types/new">
+            <button>Add New Vehicle Type</button>
+        </a>
+    </body>
+</html>

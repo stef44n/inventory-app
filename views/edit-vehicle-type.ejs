@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Edit Vehicle Type</title>
+    </head>
+    <body>
+        <!-- Include the header for navigation -->
+        <%- include('partials/header') %>
+
+        <h1>Edit Vehicle Type</h1>
+
+        <!-- Form to edit the vehicle type -->
+        <form
+            action="/vehicle-types/<%= vehicleType.vehicle_type_id %>?_method=PUT"
+            method="POST"
+        >
+            <label for="vehicle_type_name">Vehicle Type Name:</label>
+            <input
+                type="text"
+                id="vehicle_type_name"
+                name="vehicle_type_name"
+                value="<%= vehicleType.vehicle_type_name %>"
+                required
+            />
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                required
+            />
+
+            <!-- Hidden input to use PUT method via method-override -->
+            <input type="hidden" name="_method" value="PUT" />
+
+            <button type="submit">Update Vehicle Type</button>
+        </form>
+
+        <!-- Link to go back to the list of vehicle types -->
+        <p><a href="/vehicle-types">Back to Vehicle Types</a></p>
+    </body>
+</html>

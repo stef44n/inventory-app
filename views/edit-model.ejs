@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Car Model</title>
+</head>
+<body>
+  <!-- Include the header for navigation -->
+  <%- include('partials/header') %>
+
+  <h1>Edit Car Model: <%= model.model_name %></h1>
+
+  <!-- Form to edit the car model -->
+  <form action="/models/<%= model.model_id %>?_method=PUT" method="POST">
+    <label for="model_name">Model Name:</label>
+    <input type="text" id="model_name" name="model_name" value="<%= model.model_name %>" required>
+
+    <label for="make_id">Make:</label>
+    <select id="make_id" name="make_id" required>
+      <% makes.forEach(make => { %>
+        <option value="<%= make.make_id %>" <%= make.make_id === model.make_id ? 'selected' : '' %>>
+          <%= make.make_name %>
+        </option>
+      <% }) %>
+    </select>
+    <input type="password" name="password" placeholder="Enter password" required>
+
+    <button type="submit">Update Model</button>
+  </form>
+
+  <!-- Link to go back to the cars list for this model -->
+  <p><a href="/models/<%= model.model_id %>/cars">Back to Cars</a></p>
+</body>
+</html>

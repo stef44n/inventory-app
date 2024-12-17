@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Car Makes</title>
+    </head>
+    <body>
+        <!-- Include the header for navigation -->
+        <%- include('partials/header') %>
+
+        <h1>Car Makes</h1>
+        <p>
+            Select a car make to view the cars in that category or edit the
+            make.
+        </p>
+
+        <ul>
+            <% makes.forEach(make => { %>
+            <li>
+                <a href="/makes/<%= make.make_id %>/cars">
+                    <%= make.make_name %>
+                </a>
+            </li>
+            <% }) %>
+        </ul>
+
+        <!-- Link to add a new car make -->
+        <a href="/makes/new">
+            <button>Add New Make</button>
+        </a>
+    </body>
+</html>

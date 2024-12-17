@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Car</title>
+</head>
+<body>
+  <!-- Include the header for navigation -->
+  <%- include('partials/header') %>
+
+  <h1>Edit Car: <%= car.make_name %> <%= car.model_name %></h1>
+
+  <!-- Form to edit car details -->
+  <form action="/cars/<%= car.car_id %>?_method=PUT" method="POST">
+    <label for="model_id">Model:</label>
+    <select id="model_id" name="model_id" required>
+      <% models.forEach(model => { %>
+        <option value="<%= model.model_id %>" <%= model.model_id === car.model_id ? 'selected' : '' %>>
+          <%= model.model_name %>
+        </option>
+      <% }) %>
+    </select>
+
+    <label for="vehicle_type_id">Vehicle Type:</label>
+    <select id="vehicle_type_id" name="vehicle_type_id" required>
+      <% vehicleTypes.forEach(vehicleType => { %>
+        <option value="<%= vehicleType.vehicle_type_id %>" <%= vehicleType.vehicle_type_id === car.vehicle_type_id ? 'selected' : '' %>>
+          <%= vehicleType.vehicle_type_name %>
+        </option>
+      <% }) %>
+    </select>
+
+    <label for="yr">Year:</label>
+    <input type="number" id="yr" name="yr" value="<%= car.yr %>" required>
+
+    <label for="license_plate">License Plate:</label>
+    <input type="text" id="license_plate" name="license_plate" value="<%= car.license_plate %>" required>
+
+    <label for="mileage">Mileage:</label>
+    <input type="number" id="mileage" name="mileage" value="<%= car.mileage %>">
+
+    <label for="status">Status:</label>
+    <select id="status" name="status">
+      <option value="Available" <%= car.status === 'Available' ? 'selected' : '' %>>Available</option>
+      <option value="Rented" <%= car.status === 'Rented' ? 'selected' : '' %>>Rented</option>
+      <option value="Maintenance" <%= car.status === 'Maintenance' ? 'selected' : '' %>>Maintenance</option>
+    </select>
+    <input type="password" name="password" placeholder="Enter password" required>
+
+    <button type="submit">Update Car</button>
+  </form>
+
+  <!-- Link to go back to the car details -->
+  <p><a href="/cars/<%= car.car_id %>">Back to Car Details</a></p>
+</body>
+</html>
