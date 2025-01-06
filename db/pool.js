@@ -13,6 +13,6 @@ const { Pool } = require("pg");
 
 module.exports = new Pool({
     connectionString: process.env.CONNECTION_STRING,
-    // `postgresql://${process.env.ROLE_NAME}:${process.env.ROLE_PASSWORD}@${process.env.HOST}:${process.env.PORT}/${process.env.DATABASE}`,
+    // connectionString: `postgresql://${process.env.ROLE_NAME}:${process.env.ROLE_PASSWORD}@${process.env.HOST}:${process.env.PORT}/${process.env.DATABASE}`,
     ssl: { rejectUnauthorized: false },
 });
