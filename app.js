@@ -42,6 +42,12 @@ app.get("*", (req, res) => {
     res.status(404).render("404"); // Render a custom 404 page
 });
 
+// Error-handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).render("500", { error: err.message });
+});
+
 const PORT = 3000;
 app.listen(PORT, () =>
     console.log(`My first Express app - listening on port ${PORT}!`)
