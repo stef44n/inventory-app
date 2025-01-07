@@ -37,6 +37,11 @@ app.use("/makes", makesRouter);
 app.use("/models", modelsRouter);
 app.use("/cars", carsRouter);
 
+// Catch-all route for undefined routes
+app.get("*", (req, res) => {
+    res.status(404).render("404"); // Render a custom 404 page
+});
+
 const PORT = 3000;
 app.listen(PORT, () =>
     console.log(`My first Express app - listening on port ${PORT}!`)
